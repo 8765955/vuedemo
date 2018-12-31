@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>v-bind</title>
+</head>
+<body>
+   <h1>v-bind</h1> 
+   <hr>
+   <div id='app'>
+        <p><a :href="baiduUrl">百度</a></p>
+        <div :class="classA">綁定classA</div>
+        <div :class="{classA:isA}">按條件綁定classA</div>
+        <div :class="[classA,classB]">綁定數組classA</div>
+        <div :class="classByCheck">按checkbox綁定</div>
+        <input type="checkbox" name="classA" id="classA" value='classA' v-model="classByCheck">
+        <label for="classA">classA</label>
+        <input type="checkbox" name="classA" id="classB" value='classB' v-model="classByCheck">
+        <label for="classB">classB</label>
+        <div :style="{color:red,fontSize:font}">按style來綁定</div>
+   </div>
+   <style>
+       .classA{
+           color: green;
+       }
+       .classB{
+           font-size: 150%;
+       }
+   </style>
+   <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                baiduUrl:'https://www.baidu.com',
+                classA:'classA',
+                classB:'classB',
+                isA:false,
+                classByCheck:[],
+                red:'red',
+                font:'150%',
+            }
+        })
+   </script>
+</body>
+</html>
