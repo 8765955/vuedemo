@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue.directive</title>
+</head>
+
+<body>
+    <h1>vue.directive</h1>
+    <hr>
+    <div id='app'>
+        <div v-addcolor='color'>{{num}}</div>
+        <div><input type="button" @click='addNum' value="增  加"></div>
+    </div>
+    <script type="text/javascript">
+        /* Vue.directive('addcolor', function(el,binding){
+            console.log(el);
+            console.log(binding);
+            el.style='color:'+binding.value;
+        }); */
+        Vue.directive('addcolor', {
+            update:function(el,binding){
+                console.log(el);
+            console.log(binding);
+            el.style='color:'+binding.value+';font-Size:250%';
+            console.log(el.style);
+            },
+        }); 
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                color:'red',
+            },
+            methods: {
+                addNum: function () {
+                    this.num++;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
