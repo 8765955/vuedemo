@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>vue component 3</title>
+</head>
+
+<body>
+    <h1>vue component 3</h1>
+    <hr>
+    <div id='app'>
+        <bocsz></bocsz>
+    </div>
+    <script>
+        var bocszCompo2 = {
+            template: `<div style='color:green'>bocsz组件2</div>`
+        };
+        var bocszCompo = {
+            template: `<div style='color:red'>bocsz组件1<bocsz2></bocsz2></div>`,
+            components: {
+                'bocsz2': bocszCompo2
+            }
+        };
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'data'
+            },
+            components: {
+                "bocsz": bocszCompo
+            }
+        })
+    </script>
+</body>
+
+</html>

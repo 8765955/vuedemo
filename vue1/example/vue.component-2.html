@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>vue component-2</title>
+</head>
+<body>
+    <h1>vue component-2</h1>
+    <hr>
+    <div id='app'>
+        <bocsz desc='awesome'></bocsz>
+        <bocsz2 loc-desc='awesome'></bocsz2>
+        <bocsz3 :desc='message'></bocsz3>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'cool'
+            },
+            components:{
+                'bocsz':{
+                    template:`<div style='color:red'>这是bocsz组件 非常{{desc}}</div>`,
+                    props:['desc']
+                },
+                'bocsz2':{
+                    template:`<div style='color:red'>这是bocsz2组件 非常{{locDesc}}</div>`,
+                    props:['locDesc']
+                },
+                'bocsz3':{
+                    template:`<div style='color:red'>这是bocsz3组件 非常{{desc}}</div>`,
+                    props:['desc']
+                }
+            }
+        })
+    </script>
+</body>
+</html>

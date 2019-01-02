@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>vue component 4</title>
+</head>
+
+<body>
+    <h1>vue component4</h1>
+    <hr>
+    <div id='app'>
+        <c v-bind:is='who'></c>
+        <button @click='changecomp'>改变组件</button>
+    </div>
+    <script>
+        var compa = {
+            template: `<div style='color:red'>compA</div>`
+        };
+        var compb = {
+            template: `<div style='color:green'>compB</div>`
+        };
+        var compc = {
+            template: `<div style='color:pink'>compC</div>`
+        };
+        var app = new Vue({
+            el: '#app',
+            data: {
+                who: 'compa'
+            },
+            components: {
+                'compa': compa,
+                'compb': compb,
+                'compc': compc,
+            },
+            methods: {
+                changecomp: function () {
+                    if (this.who == 'compa')
+                        this.who = 'compb';
+                    else if (this.who == 'compb')
+                        this.who = 'compc';
+                    else
+                        this.who = 'compa';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
