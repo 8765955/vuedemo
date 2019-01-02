@@ -23,18 +23,18 @@
             el.style='color:'+binding.value;
         }); */
         Vue.directive('addcolor', {
-            update:function(el,binding){
+            update: function (el, binding) {
                 console.log(el);
-            console.log(binding);
-            el.style='color:'+binding.value+';font-Size:250%';
-            console.log(el.style);
+                console.log(binding);
+                el.style = 'color:' + binding.value + ';font-Size:250%';
+                console.log(el.style);
             },
-        }); 
+        });
         var app = new Vue({
             el: '#app',
             data: {
                 num: 10,
-                color:'red',
+                color: 'red',
             },
             methods: {
                 addNum: function () {

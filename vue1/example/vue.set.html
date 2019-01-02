@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue.set</title>
+</head>
+<body>
+    <h1>vue.set</h1>
+    <hr>
+    <h3>vue函数里 改变数组数据里的某个数据不会进行渲染，必须使用vueset来设置数据才会渲染</h3>
+    <div id='app'>
+        {{count}}
+        <div>
+            <li v-for='(item,index) in arr'>{{index+1}}-{{item}}</li>
+        </div>
+        <div><button @click='addInVue'>add</button></div>
+    </div>
+
+    <script type="text/javascript">
+        var outData={
+            count:1,
+            arr:['aaa','bbb','ccc']
+        };
+        function add(){
+            // outData.count++;
+            // app.count++;
+            // Vue.set(outData, 'count', 2);
+            // console.log(app);
+            // Vue.set(app, 'count', 2);
+            Vue.set(app.arr, 1, 'dddd')
+        };
+        var app = new Vue({
+            el:'#app',
+            data:outData,
+            methods:{
+                addInVue:function(){
+                    Vue.set(this.arr, 1, 'dd');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
