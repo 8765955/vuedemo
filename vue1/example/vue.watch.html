@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>vue watch</title>
+</head>
+
+<body>
+    <div id='app'>
+        <h1>vue watch监控属性</h1>
+        <hr>
+        <h2>两种方式watch，一种是在构造器里，一种是调用app.$watch('监控属性',function)</h2>
+        <hr>
+        <p>今天的温度: {{temp}}</p>
+        <p>穿衣建议: {{advice}}</p>
+        <p><button @click='addTemp'>增加温度</button><button @click='minusTemp'>降低温度</button></p>
+    </div>
+    <script>
+        var advices = ['羽绒服', '夹克长裙', '短袖'];
+        var app = new Vue({
+            el: '#app',
+            data: {
+                temp: 21,
+                advice: '夹克长裙'
+            },
+            methods: {
+                addTemp: function () {
+                    this.temp += 5;
+                },
+                minusTemp: function () {
+                    this.temp -= 5;
+                },
+            },
+            watch: {
+                /* temp: function (newVal, oldVal) {
+                    if (newVal > 28)
+                        this.advice = advices[2];
+                    else if (newVal > 0)
+                        this.advice = advices[1];
+                    else
+                        this.advice = advices[0];
+                } */
+            },
+        });
+        //两种方式
+        app.$watch('temp', function (newVal, oldVal) {
+            if (newVal > 28)
+                this.advice = advices[2];
+            else if (newVal > 0)
+                this.advice = advices[1];
+            else
+                this.advice = advices[0];
+        });
+    </script>
+</body>
+
+</html>
