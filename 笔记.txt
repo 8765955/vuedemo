@@ -5,6 +5,7 @@
 
 vscode设置：autoGuessEncoding，自动分析文件编码并打开
 
+
 2、安裝git
    1)安装Git管理工具，可上官网安装，安装路径https://git-scm.com/，安装路径默认C:\Program Files\Git，檢查Path是否配置成功
    2)在编辑器的文件->首选项->设置->搜索git.path->点击编辑->找到你的电脑git的安装目录，找到里面的bin文件夹，git.exe文完整路径复制下来
