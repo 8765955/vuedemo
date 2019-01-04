@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        
+
+    </div>
+    <p><button onclick='destroy()'>destroy</button></p>
+    <script>
+        var app = Vue.extend({
+            template:`<p>{{message}}</p>`,
+            data:function(){
+                return {
+                    message:'hello world'
+                }
+            },
+            destroyed:function(){
+                console.log('has been destroyed');
+            }
+        });
+        var vm = new app().$mount('#app');
+
+        function destroy(){
+            vm.$destroy();
+        }
+    </script>
+</body>
+</html>
