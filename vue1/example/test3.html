@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 简单组件、组件传属性、组件属性绑定数据、组件中is用法、组件中自定义事件 btn切换组件-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='app'>
+        <bocsz1></bocsz1>
+        <bocsz2 dept='信息科技部'></bocsz2>
+        <bocsz3 :team='team'></bocsz3>
+        <cd :is='who'></cd>
+        <btn @abcclick='changecd'></btn>
+    </div>
+    <script>
+        var bocsz1 = {
+            template:`<p style='color:red'>bocsz1组件</p>`
+        };
+        var bocsz2 = {
+            template:`<p style='color:blue'>bocsz2组件，dept:{{dept}}</p>`,
+            props:['dept']
+        };
+        var bocsz3 = {
+            template:`<p style='color:green'>bocsz3组件，team:{{team}}</p>`,
+            props:['team']
+        };
+        var btn = {
+            template:`<button @click='change'>切换</button>`,
+            props:['team'],
+            methods:{
+                change:function(){
+                    // console.log('1');
+                    this.$emit('abcclick');
+                }
+            }
+        };
+        var app = new Vue({
+            el:'#app',
+            data:{
+                team:'中间业务',
+                who:'bocsz1'
+            },
+            components:{
+                bocsz1:bocsz1,
+                bocsz2:bocsz2,
+                bocsz3:bocsz3,
+                btn:btn,
+            },
+            methods:{
+                changecd:function(){
+                    if(this.who=='bocsz1')
+                        this.who='bocsz2';
+                    else if(this.who=='bocsz2')
+                    this.who='bocsz3';
+                    else    
+                    this.who='bocsz1';
+                    // console.log('2');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

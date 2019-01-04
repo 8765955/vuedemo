@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>vue directives</title>
+</head>
+<body>
+    <div id='app'>
+        <h1>vue directives</h1>
+        <hr>
+        <p v-addcolor='color' v-addsize='size'>{{message}}</p>
+    </div>
+    <script>
+        Vue.directive('addcolor',{
+            inserted:function(el,binding){
+                el.style.color=binding.value;
+            }
+        });
+        Vue.directive('addsize',{
+            inserted:function(el,binding){
+                console.log(el.style);
+                el.style.fontSize=binding.value;
+            }
+        });
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'hello world',
+                color:'red',
+                size:'200%'
+            }
+        })
+    </script>
+</body>
+</html>
