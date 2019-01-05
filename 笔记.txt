@@ -21,6 +21,7 @@ vscode设置：autoGuessEncoding，自动分析文件编码并打开
 
 3、vue-devtool安装 参照网上文档
 
+
 4、安装vue-cli
    1)cnpm install vue-cli -g，安装完成后vue -V查看版本
    2)vue init <template-name> <project-name>
