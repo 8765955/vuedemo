@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>vue.component-slot</h1>
+    <hr>
+    <div id='app'>
+        <bocsz>
+            <span slot='dept'>{{bocsz.dept}}</span>
+            <span slot='team'>{{bocsz.team}}</span>
+        </bocsz>
+    </div>
+    <template id='temp1'>
+        <div>
+            <p>部门：<slot name='dept'></slot></p>
+            <p>团队：<slot name='team'></slot></p>
+        </div>
+    </template>
+    <script>
+        var bocsz = {
+            template: '#temp1'
+        };
+        var app = new Vue({
+            el: '#app',
+            data: {
+                bocsz: {
+                    dept: '信息科技部',
+                    team: '中间业务'
+                }
+            },
+            components: {
+                bocsz: bocsz
+            }
+        })
+    </script>
+</body>
+
+</html>
